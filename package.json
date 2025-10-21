@@ -1,0 +1,36 @@
+```json
+{
+  "name": "e-commerce-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Root package for the E-Commerce Platform monorepo, managing both the frontend and backend workspaces.",
+  "author": "Your Name or Company <contact@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/e-commerce-platform.git"
+  },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "install:all": "npm install --workspaces",
+    "dev": "concurrently \"npm:dev:backend\" \"npm:dev:frontend\"",
+    "start": "npm start --workspace=backend",
+    "build": "npm run build --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "test": "npm test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "heroku-postbuild": "npm install --workspaces && npm run build --workspace=frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+```
